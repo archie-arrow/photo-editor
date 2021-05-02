@@ -92,7 +92,7 @@ saveBtn.addEventListener('click', function () {
         imgContext = imgCanvas.getContext("2d");
     imgCanvas.width = image.width;
     imgCanvas.height = image.height;
-
+    imgContext.filter = filterProperty;
     imgContext.drawImage(image, 0, 0, image.width, image.height);
     let imgInfo = imgCanvas.toDataURL("image/png");
 
