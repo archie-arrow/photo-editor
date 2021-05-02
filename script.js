@@ -84,7 +84,14 @@ function loadFile(input) {
     image.src = URL.createObjectURL(file);
 }
 
+function imgToCanvas(image) {
+	let canvas = document.createElement("canvas");
+	canvas.width = image.width;
+	canvas.height = image.height;
+	canvas.getContext("2d").drawImage(image, 0, 0);
 
+	return canvas;
+}
 
 saveBtn.addEventListener('click', function () {
 
@@ -94,20 +101,12 @@ saveBtn.addEventListener('click', function () {
                       saturate(${saturateFilter.value + saturateFilter.getAttribute('data-sizing')}) 
                       hue-rotate(${hueFilter.value + hueFilter.getAttribute('data-sizing')})`;
 
-    let imgCanvas = document.createElement("canvas"),
-        imgContext = imgCanvas.getContext("2d");
-    imgCanvas.width = image.width;
-    imgCanvas.height = image.height;
-    imgContext.filter = filterProperty;
-    imgContext.drawImage(image, 0, 0, image.width, image.height);
-    let imgInfo = imgCanvas.toDataURL("image/png");
-
-    localStorage.setItem("imgInfo", imgInfo);
+    let canvas = imgToCanvas(image);
+    canvas.getContext('2d').filter = filterProperty;   
 
     let link = document.createElement('a');
     link.download = 'download.png';
-    link.href = imgCanvas.toDataURL();
-
+    link.href = canvas.toDataURL();
     link.click();
     link.delete();
 
