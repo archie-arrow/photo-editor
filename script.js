@@ -88,6 +88,12 @@ function loadFile(input) {
 
 saveBtn.addEventListener('click', function () {
 
+    let filterProperty = `sepia(${sepiaFilter.value + sepiaFilter.getAttribute('data-sizing')}) 
+                      blur(${blurFilter.value + blurFilter.getAttribute('data-sizing')}) 
+                      invert(${invertFilter.value + invertFilter.getAttribute('data-sizing')}) 
+                      saturate(${saturateFilter.value + saturateFilter.getAttribute('data-sizing')}) 
+                      hue-rotate(${hueFilter.value + hueFilter.getAttribute('data-sizing')})`;
+
     let imgCanvas = document.createElement("canvas"),
         imgContext = imgCanvas.getContext("2d");
     imgCanvas.width = image.width;
