@@ -1,10 +1,12 @@
 const fullscreenButton = document.querySelector('.fullscreen');
 
-fullscreenButton.addEventListener('click', toggleFullScreen);
-
-function toggleFullScreen() {
-    document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen();
-}
+fullscreenButton.addEventListener('click', function () {
+    if (document.fullscreenElement) {
+        document.exitFullscreen();
+    } else {
+        document.documentElement.requestFullscreen();
+    }
+});
 
 let sepiaFilter = document.getElementById('sepia'),
     blurFilter = document.getElementById('blur'),
@@ -85,7 +87,6 @@ function loadFile(input) {
 }
 
 saveBtn.addEventListener('click', function () {
-
     let filterProperty = `sepia(${sepiaFilter.value + sepiaFilter.getAttribute('data-sizing')}) 
                       blur(${blurFilter.value + blurFilter.getAttribute('data-sizing')}) 
                       invert(${invertFilter.value + invertFilter.getAttribute('data-sizing')}) 
@@ -98,14 +99,12 @@ saveBtn.addEventListener('click', function () {
     canvas.height = image.height;
     context.filter = filterProperty;
     context.drawImage(image, 0, 0, image.width, image.height);
-    
+
     let imgInfo = canvas.toDataURL("image/png");
     localStorage.setItem("imgInfo", imgInfo);
 
     let link = document.createElement('a');
-    link.download = 'download.png';
+    link.download = 'filter-' + image.src.split('/').pop();
     link.href = canvas.toDataURL();
     link.click();
-    link.delete();
-
 });

@@ -189,12 +189,10 @@ output {
   max-width: 60%;
 }
 
-img {
-  height: 100%;
-  width: 100%;
-  max-height: 520px;
-  max-width: 830px;
-  object-fit: contain;
+#editor-image {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
   filter: blur(0px) invert(0%) sepia(0%) saturate(100%) hue-rotate(0deg);
 }
 
@@ -248,6 +246,7 @@ img {
 }
 
 .logo {
+  object-fit: fill;
   display: block;
   width: 60px;
   height: 60px;
