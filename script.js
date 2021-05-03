@@ -84,15 +84,6 @@ function loadFile(input) {
     image.src = URL.createObjectURL(file);
 }
 
-function imgToCanvas(image) {
-	let canvas = document.createElement("canvas");
-	canvas.width = image.width;
-	canvas.height = image.height;
-	canvas.getContext("2d").drawImage(image, 0, 0);
-
-	return canvas;
-}
-
 saveBtn.addEventListener('click', function () {
 
     let filterProperty = `sepia(${sepiaFilter.value + sepiaFilter.getAttribute('data-sizing')}) 
@@ -101,8 +92,15 @@ saveBtn.addEventListener('click', function () {
                       saturate(${saturateFilter.value + saturateFilter.getAttribute('data-sizing')}) 
                       hue-rotate(${hueFilter.value + hueFilter.getAttribute('data-sizing')})`;
 
-    let canvas = imgToCanvas(image);
-    canvas.getContext('2d').filter = filterProperty;   
+    let canvas = document.createElement("canvas"),
+        context = canvas.getContext("2d");
+    canvas.width = image.width;
+    canvas.height = image.height;
+    context.filter = filterProperty;
+    context.drawImage(image, 0, 0, image.width, image.height);
+    
+    let imgInfo = canvas.toDataURL("image/png");
+    localStorage.setItem("imgInfo", imgInfo);
 
     let link = document.createElement('a');
     link.download = 'download.png';
