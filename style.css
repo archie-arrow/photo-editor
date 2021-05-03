@@ -11,29 +11,27 @@ a:focus {
 
 body {
   min-height: 100vh;
-  background-color: #313940;
-  font-family: 'Open Sans', Arial, Helvetica, sans-serif;
+  background-color: #eee;
+  font-family: 'Roboto', Arial, Helvetica, sans-serif;
   overflow-x: hidden;
 }
 
 .header {
   text-align: center;
   width: 100%;
-  background: #313940;
-  border-bottom: 1px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to left, #38495a, #a2abb3, #38495a);
+  background: #eee;
 }
 
 .header-title {
   line-height: 60px;
-  font-weight: 300;
-  color: #fff;
+  text-transform: uppercase;
+  font-weight: 400;
+  color: #333;
 }
 
 .main {
-  min-height: calc(100vh - 110px);
-  padding: 58px 10px 0;
+  min-height: calc(100vh - 150px);
+  padding: 40px 10px 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -47,27 +45,27 @@ label:not(.btn) {
   position: relative;
   margin-bottom: 40px;
   margin-right: 140px;
-  color: #a2abb3;
+  color: #333;
   font-size: 16px;
 }
 
 label:hover {
-  color: #cbd5de;
+  color: #000;
 }
 
 label:hover output {
-  color: #a2abb3;
+  color: #000;
 }
 
 label:active output {
-  color: #cbd5de;
+  color: #000;
 }
 
 input[type='range'] {
   display: block;
   appearance: none;
   height: 3px;
-  background-color: #a2abb3;
+  background-color: #333;
   margin-top: 22px;
   outline: none;
   border-radius: 0.25rem;
@@ -80,8 +78,8 @@ input[type='range']::-webkit-slider-thumb {
   appearance: none;
   width: 25px;
   height: 25px;
-  background-color: #313940;
-  border: 3px solid #a2abb3;
+  background-color: #333;
+  border: 3px solid #00c9b7;
   border-radius: 50%;
   cursor: pointer;
   transition: 0.3s;
@@ -97,8 +95,8 @@ output {
   height: 40px;
   right: -80px;
   top: 24px;
-  background-color: #454c53;
-  border: 1px solid #454c53;
+  background-color: #ddd;
+  border: 1px solid #333;
   text-align: left;
   padding-left: 10px;
   line-height: 40px;
@@ -126,13 +124,13 @@ output {
   min-width: 120px;
   height: 40px;
   padding: 0 10px;
-  background-color: #454c53;
+  background-color: #333;
   border: 0;
   border-radius: 2px;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-size: 16px;
   font-weight: 300;
-  color: #fff;
+  color: #eee;
   outline: 0;
   cursor: pointer;
   transition: 0.3s;
@@ -160,6 +158,10 @@ output {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+}
+
+.btn-load:hover {
+  color: #eee;
 }
 
 .btn-load--input {
@@ -198,8 +200,8 @@ img {
 
 .fullscreen {
   position: fixed;
-  top: 120px;
-  right: 40px;
+  top: 20px;
+  right: 20px;
   width: 40px;
   height: 40px;
   background-color: rgba(255, 255, 255, 0.3);
@@ -220,10 +222,7 @@ img {
 }
 
 .footer {
-  border-top: 1px solid;
-  border-image-slice: 1;
-  border-image-source: linear-gradient(to left, #38495a, #a2abb3, #38495a);
-  background-color: #313940;
+  background-color: #eee;
 }
 
 .footer-container {
@@ -236,54 +235,22 @@ img {
   margin: 0 auto;
 }
 
-.github {
+.github img {
   display: block;
-  width: 120px;
-  height: 45px;
-  padding-left: 45px;
-  background-image: url('assets/svg/github.svg');
-  background-size: 35px;
-  background-repeat: no-repeat;
-  background-position: left center;
-  line-height: 45px;
-  color: #cbd5de;
-  font-size: 16px;
-  font-family: 'Open Sans', sans-serif;
-  transition: 0.3s;
+  width: 40px;
+  height: 40px;
+  filter: invert(1) contrast(2);
+  transition: all .3s;
 }
 
-.github:hover {
-  color: #fff;
+.github img:hover {
+  filter: invert(1) contrast(1);
 }
 
-.rss {
+.logo {
   display: block;
-  position: relative;
-  font-family: 'Open Sans', sans-serif;
-  width: 86px;
-  height: 32px;
-  background-image: url('assets/svg/rss.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: left center;
-  padding-right: 111px;
-}
-
-.rss-year {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  font-size: 21px;
-  letter-spacing: -2px;
-  color: #cbd5de;
-  line-height: 0.9;
-  font-weight: bold;
-  transition: 0.3s;
-}
-
-.rss:hover .rss-year {
-  right: -5px;
-  letter-spacing: 0;
+  width: 60px;
+  height: 60px;
 }
 
 @media (max-width: 1024px) {
